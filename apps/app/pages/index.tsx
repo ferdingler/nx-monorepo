@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 
-export function Index() {
+export function Index({ now }) {
   /*
    * Replace the elements below with your own.
    *
@@ -13,7 +13,7 @@ export function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome app 👋
+              Today is {now}
             </h1>
           </div>
 
@@ -411,5 +411,14 @@ export function Index() {
     </div>
   );
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      now: new Date().toISOString(),
+    }, // will be passed to the page component as props
+  }
+}
+
 
 export default Index;
